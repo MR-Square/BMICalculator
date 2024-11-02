@@ -6,4 +6,19 @@ class AppTextStyles {
     color: AppColors.greyTxtColor,
     fontSize: 20,
   );
+  static const TextStyle largeGrey24 = TextStyle(
+    color: AppColors.greyTxtColor,
+    fontSize: 24,
+    fontWeight: FontWeight.w300,
+  );
+  static const TextStyle boldWhite18 = TextStyle(
+    color: AppColors.whiteTxtColor,
+    fontWeight: FontWeight.bold,
+    fontSize: 18,
+  );
+  static const TextStyle boldWhite30 = TextStyle(
+    color: AppColors.whiteTxtColor,
+    fontWeight: FontWeight.bold,
+    fontSize: 30,
+  );
 }
