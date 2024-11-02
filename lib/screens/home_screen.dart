@@ -12,11 +12,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Widget activeScreen = const FormScreen();
   String bottomBtnText = 'Calculate';
+  int id = 1;
+
+  int gender = 1;
+  double ht = 120;
+  double weight = 40;
+  double age = 5;
+
+  Widget? activeScreen;
+
   @override
   void initState() {
     super.initState();
+    activeScreen = FormScreen(
+      uGender: gender,
+      uHeight: ht,
+      uWeight: weight,
+      uAge: age,
+      callback: calculateBmi,
+    );
   }
 
   @override
@@ -27,8 +42,26 @@ class _HomeScreenState extends State<HomeScreen> {
       body: activeScreen,
       bottomNavigationBar: BottomBtnWidget(
         bottomBtnText: bottomBtnText,
-        onPress: () {},
+        onPress: () {
+          if (id == 1) {
+            bottomBtnText = 'Recalculate';
+            calculateBmi();
+            setState(() {});
+          } else {
+            bottomBtnText = 'Calculate';
+            activeScreen = FormScreen(
+              uGender: gender,
+              uHeight: ht,
+              uWeight: weight,
+              uAge: age,
+              callback: calculateBmi,
+            );
+            setState(() {});
+          }
+        },
       ),
     );
   }
+
+  calculateBmi() {}
 }

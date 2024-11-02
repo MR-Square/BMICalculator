@@ -21,4 +21,9 @@ class AppTextStyles {
     fontWeight: FontWeight.bold,
     fontSize: 30,
   );
+  static const TextStyle boldWhite50 = TextStyle(
+    color: AppColors.whiteTxtColor,
+    fontWeight: FontWeight.bold,
+    fontSize: 50,
+  );
 }
