@@ -17,6 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int id = 1;
   double? bmiVal;
   String? result;
+  Color? resultColor;
   String? description;
 
   int gender = 1;
@@ -50,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
               val: bmiVal ?? 0,
               status: result ?? '',
               description: description ?? '',
+              statusColor: resultColor ?? AppColors.largeBtn,
             );
             id = 2;
             setState(() {});
@@ -58,6 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
             id = 1;
             ht = 120;
             weight = 40;
+            resultColor = null;
             activeScreen = FormScreen(
               onDataChanged: _updateData,
             );
@@ -92,6 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
     } else if (bmiVal! >= 18.5 && bmiVal! <= 24.9) {
       result = 'Normal';
       description = 'You have a Normal body weight, Good Job!';
+      resultColor = AppColors.greenTxtColor;
     } else if (bmiVal! >= 25.0 && bmiVal! <= 29.9) {
       result = 'Overweight';
       description = 'Your weight is Overweighted, need focus on your health';

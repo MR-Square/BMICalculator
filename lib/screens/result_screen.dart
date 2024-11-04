@@ -8,11 +8,13 @@ class ResultScreen extends StatelessWidget {
     required this.val,
     required this.status,
     required this.description,
+    this.statusColor = AppColors.largeBtn,
   });
 
   final double val;
   final String status;
   final String description;
+  final Color? statusColor;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,9 @@ class ResultScreen extends StatelessWidget {
               SizedBox(height: height * 0.1),
               Text(
                 status,
-                style: AppTextStyles.boldGreen30,
+                style: AppTextStyles.boldGreen30.copyWith(
+                  color: statusColor,
+                ),
               ),
               SizedBox(height: height * 0.1),
               Text(
