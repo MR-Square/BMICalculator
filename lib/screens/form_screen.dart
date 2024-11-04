@@ -7,18 +7,10 @@ import 'package:flutter/material.dart';
 class FormScreen extends StatefulWidget {
   const FormScreen({
     super.key,
-    required this.uGender,
-    required this.uHeight,
-    required this.uWeight,
-    required this.uAge,
-    required this.callback,
+    required this.onDataChanged,
   });
 
-  final int uGender;
-  final double uHeight;
-  final double uWeight;
-  final double uAge;
-  final VoidCallback callback;
+  final Function(double, double) onDataChanged;
 
   @override
   State<FormScreen> createState() => _FormScreenState();
@@ -75,11 +67,13 @@ class _FormScreenState extends State<FormScreen> {
                     setState(() {
                       selectedWeight -= 0.2;
                     });
+                    widget.onDataChanged(selectedHeight, selectedWeight);
                   },
                   addFun: () {
                     setState(() {
                       selectedWeight += 0.2;
                     });
+                    widget.onDataChanged(selectedHeight, selectedWeight);
                   },
                 ),
                 SmallCardWidget(
@@ -111,69 +105,9 @@ class _FormScreenState extends State<FormScreen> {
   }
 
   selectHeight(double newHt) {
+    widget.onDataChanged(selectedHeight, selectedWeight);
     setState(() {
       selectedHeight = newHt;
     });
   }
 }
-/**
-Container(
-                  width: width * 0.4,
-                  height: height * 0.26,
-                  margin: const EdgeInsets.symmetric(
-                    vertical: 8,
-                    horizontal: 10,
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: AppColors.card1,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      const Text(
-                        'Weight',
-                        style: AppTextStyles.largeGrey24,
-                      ),
-                      Text(
-                        selectedWeight.toStringAsFixed(1),
-                        style: AppTextStyles.boldWhite50,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          IconButton(
-                            padding: const EdgeInsets.all(0),
-                            style: IconButton.styleFrom(
-                              backgroundColor: AppColors.smallBtn,
-                            ),
-                            highlightColor: Colors.white,
-                            color: AppColors.whiteTxtColor,
-                            onPressed: () {
-                              setState(() {
-                                selectedWeight -= 0.2;
-                              });
-                            },
-                            icon: const Icon(Icons.remove),
-                          ),
-                          IconButton(
-                            padding: const EdgeInsets.all(0),
-                            style: IconButton.styleFrom(
-                              backgroundColor: AppColors.smallBtn,
-                            ),
-                            highlightColor: Colors.white,
-                            color: AppColors.whiteTxtColor,
-                            onPressed: () {
-                              setState(() {
-                                selectedWeight += 0.2;
-                              });
-                            },
-                            icon: const Icon(Icons.add),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ), 
-
-*/
