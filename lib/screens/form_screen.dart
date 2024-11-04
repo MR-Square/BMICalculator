@@ -65,13 +65,13 @@ class _FormScreenState extends State<FormScreen> {
                   value: selectedWeight,
                   subFun: () {
                     setState(() {
-                      selectedWeight -= 0.2;
+                      selectedWeight -= 0.5;
                     });
                     widget.onDataChanged(selectedHeight, selectedWeight);
                   },
                   addFun: () {
                     setState(() {
-                      selectedWeight += 0.2;
+                      selectedWeight += 0.5;
                     });
                     widget.onDataChanged(selectedHeight, selectedWeight);
                   },

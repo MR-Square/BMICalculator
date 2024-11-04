@@ -26,4 +26,9 @@ class AppTextStyles {
     fontWeight: FontWeight.bold,
     fontSize: 50,
   );
+  static const TextStyle boldGreen30 = TextStyle(
+    color: AppColors.greenTxtColor,
+    fontWeight: FontWeight.bold,
+    fontSize: 30,
+  );
 }

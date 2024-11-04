@@ -15,7 +15,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String bottomBtnText = 'Calculate';
   int id = 1;
-  double? result;
+  double? bmiVal;
+  String? result;
+  String? description;
 
   int gender = 1;
   double ht = 120;
@@ -45,7 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
             bottomBtnText = 'Recalculate';
             calculateBmi();
             activeScreen = ResultScreen(
-              result: result ?? 0,
+              val: bmiVal ?? 0,
+              status: result ?? '',
+              description: description ?? '',
             );
             id = 2;
             setState(() {});
@@ -72,6 +76,28 @@ class _HomeScreenState extends State<HomeScreen> {
   calculateBmi() {
     // converting height from cm to m.
     ht = ht / 100;
-    result = weight / (ht * ht);
+    bmiVal = weight / (ht * ht);
+    if (bmiVal! < 16.0) {
+      result = 'Severe Thinness';
+      description =
+          'You have a Severe Thinness body weight, Need more focus on health';
+    } else if (bmiVal! >= 16.0 && bmiVal! <= 16.9) {
+      result = 'Moderate Thinness';
+      description =
+          'You have a Moderate Thinness body weight, Need more focus on health';
+    } else if (bmiVal! >= 17.0 && bmiVal! <= 18.4) {
+      result = 'Mild Thinness';
+      description =
+          'You have a Mild Thinness body weight, Need focus on health';
+    } else if (bmiVal! >= 18.5 && bmiVal! <= 24.9) {
+      result = 'Normal';
+      description = 'You have a Normal body weight, Good Job!';
+    } else if (bmiVal! >= 25.0 && bmiVal! <= 29.9) {
+      result = 'Overweight';
+      description = 'Your weight is Overweighted, need focus on your health';
+    } else {
+      result = 'Obese Class';
+      description = 'You fall in Obese Class, work on your health';
+    }
   }
 }
